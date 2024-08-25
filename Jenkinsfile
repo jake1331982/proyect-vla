@@ -7,7 +7,7 @@ pipeline {
         stage("Clonar Repositorio") {
             steps {
                 script {
-                    git credentialsId: 'GITHUB_CREDENTIAL', url: 'https://github.com/jake1331982/proyecto-vla.git', branch: 'main'
+                    git credentialsId: 'GITHUB_CREDENTIAL', url: 'https://github.com/jake1331982/proyecto-vla.git'
                 }
             }
         }
