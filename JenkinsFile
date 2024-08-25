@@ -9,7 +9,7 @@ pipeline {
         stage('Clonar Repositorio') {
             steps {
                 script {
-                    git credentialsId: env.GIT_CREDENTIALS, url: 'https://github.com/jake1331982/ec2-node.git'
+                    git credentialsId: env.GIT_CREDENTIALS, url: 'https://github.com/jake1331982/proyect-vla.git'
                 }
             }
         }
