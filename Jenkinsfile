@@ -16,14 +16,14 @@ pipeline {
         stage('Instalar Dependencias') {
             steps {
                 script {
-                    "echo 'hola'"
+                    sh "echo 'hola'"
                 }
             }
         }
         stage('Ejecutar Pruebas') {
             steps {
                 script {
-                    sh "echo 'hola'"'
+                    sh "echo 'hola'"
                 }
             }
         }
