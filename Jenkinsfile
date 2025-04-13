@@ -1,16 +1,17 @@
 pipeline {
     agent any
     
-    environment {
-        GIT_CREDENTIALS = credentials('GIT_TOKEN') // Utiliza la función credentials() para obtener las credenciales
-    }
     
     stages {
         stage('Clonar Repositorio') {
             steps {
-                script {
-                    git credentials: GIT_CREDENTIALS, url: 'https://github.com/jake1331982/proyect-vla.git'
+                WithCrdential([UsernamePassword(credentialsID:'github_credentials',usernameVariable:'GITHUB_USERNAME',passwordVariable:'GITHUB_PASSWORD')]){
+                    script{
+                    sh "git clone https://GITHUB_USERNAME:GITHUB_PASSWORD:@github.com/jake1331982/proyect-vla.git"
+                    
                 }
+            }
+                
             }
         }
         
