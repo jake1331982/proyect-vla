@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        GIT_CREDENTIALS = credentials('GITHUB_CREDENTIALS') // Utiliza la función credentials() para obtener las credenciales
+        GIT_CREDENTIALS = credentials('GIT_TOKEN') // Utiliza la función credentials() para obtener las credenciales
     }
     
     stages {
