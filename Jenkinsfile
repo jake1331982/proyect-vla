@@ -1,83 +1,28 @@
-pipeline {
+pipeline{
     agent any
-    
-    
     stages {
-        stage('Clonar Repositorio') {
+        stage('Clear Workspace') {
             steps {
+                sh 'rm -rf *'
+                echo 'Workspace cleared'
+            }
+        }
+        stage('Git Clone') {
+        
+            steps{
                 WithCredentials([UsernamePassword(credentialsId:'github_credentials',usernameVariable:'GITHUB_USERNAME',passwordVariable:'GITHUB_PASSWORD')]){
                     script{
-                    sh "git clone https://GITHUB_USERNAME:GITHUB_PASSWORD:@github.com/jake1331982/proyect-vla.git"
-                    
-                }
-           
-        
-        
-        
-        
-        
-        
-    }
-    
-    post {
-        success {
-            echo 'Pipeline ejecutado con éxito.'
-        }
-        failure {
-            echo 'El pipeline ha fallado.'
-        }
-    }
-}
-pipeline {
-    agent any
-    
-    environment {
-        GIT_CREDENTIALS = credentials('GITHUB_CREDENTIALS') // Utiliza la función credentials() para obtener las credenciales
-    }
-    
-    stages {
-        stage('Clonar Repositorio') {
-            steps {
-                script {
-                    git credentials: GIT_CREDENTIALS, url: 'https://github.com/jake1331982/proyect-vla.git'
+                        sh "git clone https://GITHUB_USERNAME:GITHUB_PASSWORD:@github.com/jake1331982/proyect-vla.git"
+                    }
                 }
             }
         }
-        
-        stage('Instalar Dependencias') {
+
+
+        stage('Deploy') {
             steps {
-                script {
-                    sh 'echo "Instalando dependencias..."'
-                    // Aquí deberías agregar los comandos reales para instalar dependencias
-                }
+                echo 'Deploying...'
             }
-        }
-        
-        stage('Ejecutar Pruebas') {
-            steps {
-                script {
-                    sh 'echo "Ejecutando pruebas..."'
-                    // Aquí deberías agregar los comandos reales para ejecutar las pruebas
-                }
-            }
-        }
-        
-        stage('Construir Proyecto') {
-            steps {
-                script {
-                    sh 'echo "Construyendo proyecto..."'
-                    // Aquí deberías agregar los comandos reales para construir el proyecto
-                }
-            }
-        }
-    }
-    
-    post {
-        success {
-            echo 'Pipeline ejecutado con éxito.'
-        }
-        failure {
-            echo 'El pipeline ha fallado.'
         }
     }
 }
