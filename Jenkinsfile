@@ -23,19 +23,19 @@ pipeline {
         stage('Ejecutar Pruebas') {
             steps {
                 script {
-                    sh "echo 'hola'"'
+                    sh "echo 'hola'"
                 }
             }
         }
         stage('Construir Proyecto') {
             steps {
                 script {
-                    sh "echo 'hola'"
+                    sh "echoJenkinsfile 'hola'"
                 }
             }
         }
     }
-    post {
+    post {Jenkinsfile
         success {
             echo 'Pipeline ejecutado con éxito.'
         }
