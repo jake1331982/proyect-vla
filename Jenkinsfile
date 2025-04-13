@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                WithCrdential([UsernamePassword(credentialsID:'github_credentials',usernameVariable:'GITHUB_USERNAME',passwordVariable:'GITHUB_PASSWORD')]){
+                WithCredentials([UsernamePassword(credentialsId:'github_credentials',usernameVariable:'GITHUB_USERNAME',passwordVariable:'GITHUB_PASSWORD')]){
                     script{
                     sh "git clone https://GITHUB_USERNAME:GITHUB_PASSWORD:@github.com/jake1331982/proyect-vla.git"
                     
